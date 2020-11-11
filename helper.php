@@ -83,3 +83,19 @@ if (!function_exists('toJalali')) {
     }
 }
 
+// convert digits (en, fa)
+function convertDigits($number, $result = 'fa')
+{
+    $arr = array();
+    switch ($result){
+        case 'en':
+            $arr = array('۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹');
+            $num = array('0', '1', '2', '3', '4', '5', '6', '7', '8', '9');
+            break;
+        case 'fa':
+            $arr = array('0', '1', '2', '3', '4', '5', '6', '7', '8', '9');
+            $num = array('۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹');
+            break;
+    }
+    return str_replace($arr, $num, $number);
+}
