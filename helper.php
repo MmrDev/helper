@@ -62,6 +62,7 @@ if (!function_exists('uploadFilePro')) {
 
 // georgian to jalali
 
+use Morilog\Jalali\CalendarUtils;
 
 if (!function_exists('toJalali')) {
     function toJalali($dateTime)
