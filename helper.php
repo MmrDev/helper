@@ -58,3 +58,28 @@ if (!function_exists('uploadFilePro')) {
 
     }
 }
+
+
+// georgian to jalali
+
+
+if (!function_exists('toJalali')) {
+    function toJalali($dateTime)
+    {
+        $val = strtotime($dateTime);
+        $date = DateTime::createFromFormat('U', $val);
+        $date->setTimeZone(new DateTimeZone('Asia/Tehran'));
+        $newDate = $date->format('Y/m/d');
+
+
+        $newDate = explode('/', $newDate);
+        $newDate = CalendarUtils::toJalali($newDate[0], $newDate[1], $newDate[2]);
+        $newDate = implode('/', $newDate);
+
+        return [
+            'date' => $newDate,
+            'time' => $date->format('H:m:s')
+        ];
+    }
+}
+
